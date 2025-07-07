@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asistencia QR Web</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/minified/html5-qrcode.min.js"></script>
+</head>
+<body>
+  <header><h1>Registro de Asistencia por QR</h1></header>
+
+  <main class="container">
+    <section class="scanner-panel">
+      <div id="reader" class="qr-reader"></div>
+      <button id="start-scan">Iniciar escaneo</button>
+      <button id="stop-scan">Detener escaneo</button>
+    </section>
+
+    <section class="info-panel">
+      <div class="form-group">
+        <label>Buscar participante:</label>
+        <input type="text" id="search" placeholder="Escriba apellido..." />
+        <ul id="autocomplete-list" class="autocomplete"></ul>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha:</label>
+        <input type="date" id="fecha" />
+      </div>
+
+      <div class="form-group">
+        <label>Registro manual:</label>
+        <select id="registro-tipo">
+          <option value="entrada">Entrada</option>
+          <option value="salida">Salida</option>
+        </select>
+        <button id="registrar-manual">Registrar</button>
+      </div>
+
+      <div class="form-group resumen">
+        <p>Total: <span id="total">0</span></p>
+        <p>Entradas: <span id="registrados-entrada">0</span></p>
+        <p>Salidas: <span id="registrados-salida">0</span></p>
+        <p>Faltantes: <span id="faltantes">0</span></p>
+      </div>
+    </section>
+  </main>
+
+  <section class="tabla-section">
+    <h2>Participantes</h2>
+    <table id="tabla-participantes">
+      <thead>
+        <tr>
+          <th>ID</th><th>Nombre</th><th>Correo</th><th>Facultad</th><th>Área</th><th>Entrada</th><th>Salida</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <audio id="beep" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
